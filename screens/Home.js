@@ -5,7 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 
 
-export default function Home () {
+export default function Home ({navigation}) {
 
     {/* Setting states for todos and list of todos */}
 
@@ -36,9 +36,9 @@ export default function Home () {
         let todo_aux = [...todoList];
         todo_aux.splice(index, 1);  //when todo is finished, remove it from list
         setTodoList(todo_aux);
-        let todo_completed = [];
-        todo_completed.push(todoList[index])
-        console.log(todo_completed[0], 'is completed')
+        todoDone.push(todoList[index])
+        console.log(todoDone, 'is completed')
+        setTodoDone(todoDone);
         //let todo_completed = [...]
         //setCompleted([...todo_aux, todoList(index)])
     }
@@ -70,7 +70,7 @@ export default function Home () {
 
                     {/* Today's Tasks */}
             <View style = {styles.todoWrapper}>
-                <Text style = {styles.listTitle}>Minimalist Note App</Text>
+                <Text style = {styles.listTitle}>Your Reminders</Text>
 
                 <View style = {styles.listoftodos}>
                         {/* All the reminders will be stored here! */}
