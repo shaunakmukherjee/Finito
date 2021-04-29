@@ -1,5 +1,13 @@
 import React, {useState} from 'react';
-import { Alert, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View } from 'react-native';
+import { Alert, 
+        Keyboard, 
+        KeyboardAvoidingView, 
+        Platform, 
+        StyleSheet, 
+        Text, 
+        TextInput, 
+        TouchableOpacity, 
+        View } from 'react-native';
 import Todo from '../components/Todo';
 import { MaterialIcons } from '@expo/vector-icons'; 
 
@@ -39,11 +47,11 @@ export default function Home ({navigation}) {
         todoDone.push(todoList[index])
         console.log(todoDone, 'is completed')
         setTodoDone(todoDone);
-        //let todo_completed = [...]
-        //setCompleted([...todo_aux, todoList(index)])
+        
+        return todoDone;
     }
 
-
+    
 
 
     return(
@@ -61,7 +69,7 @@ export default function Home ({navigation}) {
             
                 <TouchableOpacity onPress = {() => handleNewTodo(todo)}>
                     <View style = {styles.addWrapper}>
-                      <MaterialIcons name="add-task" size={30} color= '#4169E1' />
+                      <MaterialIcons name="add-task" size={30} color= '#80BD72' />
                     </View>
                 </TouchableOpacity>
 
@@ -73,14 +81,17 @@ export default function Home ({navigation}) {
                 <Text style = {styles.listTitle}>Your Reminders</Text>
 
                 <View style = {styles.listoftodos}>
-                        {/* All the reminders will be stored here! */}
+                        {/* All the reminders will be stored here!
+                        NOTE: Todo key = {index} is not needed because of unique key prop
+                        existing within Todo. */}
                 {
                     todoList.map((item, index) => {
                         return(
-                          <TouchableOpacity key = {index} onPress = {() => finishTodo(index)}>
-                                <Todo text = {item} key = {index}></Todo>
-                                
+                          <View>
+                          <TouchableOpacity onPress = {() => navigation.navigate('Completed', finishTodo(index)) }>
+                            <Todo text = {item}></Todo> 
                           </TouchableOpacity>
+                          </View>
                          )
                     })
                 }
@@ -95,7 +106,7 @@ const styles = StyleSheet.create
 ({
     container: {
       flex: 1,
-      backgroundColor: '#82CAFA',
+      backgroundColor: '#80BD72',
     },
     todoWrapper: {
       marginTop: 40,
@@ -105,6 +116,7 @@ const styles = StyleSheet.create
     listTitle: {
       fontWeight: 'bold',
       fontSize: 24,
+      color: '#FFFFFF',
       //fontFamily: 'Iowan Old Style',
       textAlign: 'center',
     },
@@ -126,7 +138,7 @@ const styles = StyleSheet.create
       width: 300,
       fontSize: 16,
       borderRadius: 60,
-      borderColor: '#4169E1',
+      borderColor: '#80BD72',
       borderWidth: 2,
     },
     addWrapper: {
@@ -139,7 +151,9 @@ const styles = StyleSheet.create
       justifyContent: 'center',
       alignItems: 'center'
     },
-    deleteTodo: {},
+    deleteTodo: {
+
+    },
 
     addText:{
       fontSize: 40,
