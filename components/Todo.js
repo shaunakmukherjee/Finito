@@ -17,7 +17,7 @@ const Todo = (props) => {
                 <View style = {styles.square}></View>
                 <Text style = {styles.todoText}>{props.text}</Text>
             </View>
-            <AntDesign name="delete" size = {20} color = '#4169E1' />
+            <AntDesign name="checksquareo" size = {20} color = '#4169E1' /> 
         </View>
     )
 }

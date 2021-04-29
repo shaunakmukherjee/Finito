@@ -35,7 +35,7 @@ export default function Home ({navigation}) {
         text: 'Got it', onPress: () => console.log('alert removed')}])
     }
     //console.log(todo.length);
-    setTodo(null); 
+   setTodo(null); 
     }
 
 
@@ -89,7 +89,7 @@ export default function Home ({navigation}) {
                         return(
                           <View>
                           <TouchableOpacity onPress = {() => navigation.navigate('Completed', finishTodo(index)) }>
-                            <Todo text = {item}></Todo> 
+                            <Todo text = {item}></Todo>
                           </TouchableOpacity>
                           </View>
                          )
