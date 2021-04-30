@@ -1,57 +1,72 @@
 import React from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, FlatList} from 'react-native';
+import { render } from 'react-dom';
+import { Text, StyleSheet, View, TouchableOpacity, FlatList, ScrollView} from 'react-native';
 import { useState } from 'react/cjs/react.development';
 import Todo from '../components/Todo';
+import { Ionicons } from '@expo/vector-icons';
+
 
 const Completed = ({route, navigation}) => {
 
     const x = route.params;
-    const todoDone = Object.values(x);
-    //console.log(todoDone);
-
-    /* const removeTodo = (index) =>{
-      todoDone.splice (index, 1);
-    }*/
-    //const { index } = route.params;
-    return (
+    if(!x){
+      return(
         <View style = {styles.container}>
             <Text style = {styles.listTitle}>
-            Your Completed Todos </Text>
-            <Text style = {styles.subtitle}>Well done, you.</Text>
+           Oh no!</Text>
+            <Text style = {styles.subtitle}>{`You haven't completed any tasks yet!\n 
+            Click the button below to start getting sh*t done.`}</Text>
 
-            {/* todoDone is the list of completed todos, which are displayed here */}
-
-             <View style = {styles.todoWrapper}>  
-               <View style = {styles.donetodos}>
-                {
-                  todoDone.map((item, index) => {
-                    return(
-                      <View>
-                        <Todo text = {item} />  
-                      </View>
-                    );
-                  })
-                }
-                </View>   
+            <TouchableOpacity style = {{alignSelf: 'center'}} onPress = {() => navigation.navigate('Home')}>
+              <View style = {styles.backbutton}>
+              <Ionicons name="arrow-back" size={50} color="#82CAFA" />
               </View>
+            </TouchableOpacity>
+        </View>
+      );
+    }
+    else{
+      const todoDone = Object.values(x);
+      return (
+          <View style = {styles.container}>
+              <Text style = {styles.listTitle}>
+              Your Completed Todos </Text>
+              <Text style = {styles.subtitle}> Well done, you! </Text>
 
-                 {/*<View style = {styles.todobox}>
-                  <View style = {styles.square}></View>
-                  <Text style={styles.todoText}>{todoDone[todoDone.length - 1]}</Text>
-                </View> */}            
-
-            
-                        
-            
-      </View>
-    );
+              <View style = {styles.todoWrapper}>  
+                  <View style = {styles.donetodos}>              
+                    <ScrollView>{
+                      todoDone.map((item) => {
+                        return(
+                          <View>
+                            <Todo text = {item}/>  
+                          </View>
+                        );
+                      })
+                    }
+                    </ScrollView>
+              </View>   
+            </View>           
+              
+        </View>
+      );
+    }
 }
 
 
 const styles = StyleSheet.create({
-    container: {
+      container: {
         flex: 1,
         backgroundColor: '#82CAFA',
+      },
+      backbutton: {
+        width: 60,
+        height: 60, 
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        borderColor: '#82CAFA',
+        borderRadius: 60,
       },
       todoWrapper: {
         marginTop: -10,
@@ -71,6 +86,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         textAlign: 'center',
         padding: 30,
+        justifyContent: 'space-evenly',
       },
 
       donetodos: {

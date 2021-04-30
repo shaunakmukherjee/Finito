@@ -75,20 +75,22 @@ export default function Home ({navigation}) {
 
             </KeyboardAvoidingView>
 
-
-                    {/* Today's Tasks */}
             <View style = {styles.todoWrapper}>
                 <Text style = {styles.listTitle}>Your Reminders</Text>
+
+
 
                 <View style = {styles.listoftodos}>
                         {/* All the reminders will be stored here!
                         NOTE: Todo key = {index} is not needed because of unique key prop
                         existing within Todo. */}
-                {
+                {   
+                   
+
                     todoList.map((item, index) => {
                         return(
                           <View>
-                          <TouchableOpacity onPress = {() => navigation.navigate('Completed', finishTodo(index)) }>
+                          <TouchableOpacity key = {index} onPress = {() => navigation.navigate('Completed', finishTodo(index)) }>
                             <Todo text = {item}></Todo>
                           </TouchableOpacity>
                           </View>
