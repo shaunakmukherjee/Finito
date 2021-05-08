@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native';
 //import App from '../App';
 //import Home from '../screens/Home'
-import { AntDesign } from '@expo/vector-icons';
+
 
 const Todo = (props) => {
     
@@ -17,7 +17,7 @@ const Todo = (props) => {
                 <View style = {styles.square}></View>
                 <Text style = {styles.todoText}>{props.text}</Text>
             </View>
-            <AntDesign name="checksquareo" size = {20} color = '#4169E1' /> 
+            
         </View>
     )
 }

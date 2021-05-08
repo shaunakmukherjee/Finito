@@ -36,11 +36,11 @@ const Completed = ({route, navigation}) => {
               <View style = {styles.todoWrapper}>  
                   <View style = {styles.donetodos}>              
                     <ScrollView>{
-                      todoDone.map((item) => {
+                      todoDone.map((todo) => {
                         return(
-                          <View>
-                            <Todo text = {item}/>  
-                          </View>
+                          <TouchableOpacity key = {todo} onPress = {() => navigation.navigate('About')}>
+                            <Todo text = {todo}></Todo>
+                          </TouchableOpacity>
                         );
                       })
                     }

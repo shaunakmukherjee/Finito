@@ -10,7 +10,7 @@ import { Alert,
         View } from 'react-native';
 import Todo from '../components/Todo';
 import { MaterialIcons } from '@expo/vector-icons'; 
-
+import { AntDesign } from '@expo/vector-icons';
 
 
 export default function Home ({navigation}) {
@@ -86,14 +86,11 @@ export default function Home ({navigation}) {
                         existing within Todo. */}
                 {   
                    
-
-                    todoList.map((item, index) => {
+                    todoList.map((todo) => {
                         return(
-                          <View>
-                          <TouchableOpacity key = {index} onPress = {() => navigation.navigate('Completed', finishTodo(index)) }>
-                            <Todo text = {item}></Todo>
+                          <TouchableOpacity key = {todoList.indexOf(todo)} onPress = {() => navigation.navigate('Completed', finishTodo(todoList.indexOf(todo)))}>
+                          <Todo text = {todo}></Todo>
                           </TouchableOpacity>
-                          </View>
                          )
                     })
                 }
