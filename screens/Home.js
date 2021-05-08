@@ -11,6 +11,8 @@ import { Alert,
 import Todo from '../components/Todo';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { AntDesign } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 
 export default function Home ({navigation}) {
@@ -57,6 +59,10 @@ export default function Home ({navigation}) {
     return(
         <View style = {styles.container}>
       
+          <LinearGradient
+              colors={['#A5A6F6', 'transparent', 'white']}
+              style={styles.background}
+          />
             {/* Typing an new todo from keyboard */}
             <KeyboardAvoidingView
                 behavior={Platform.select({android: undefined, ios: 'padding'})}
@@ -105,7 +111,14 @@ const styles = StyleSheet.create
 ({
     container: {
       flex: 1,
-      backgroundColor: '#80BD72',
+      //backgroundColor: '#80BD72',
+    },
+    background: {
+      position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 1000,
     },
     todoWrapper: {
       marginTop: 40,

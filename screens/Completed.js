@@ -4,7 +4,7 @@ import { Text, StyleSheet, View, TouchableOpacity, FlatList, ScrollView} from 'r
 import { useState } from 'react/cjs/react.development';
 import Todo from '../components/Todo';
 import { Ionicons } from '@expo/vector-icons';
-
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Completed = ({route, navigation}) => {
 
@@ -12,6 +12,10 @@ const Completed = ({route, navigation}) => {
     if(!x){
       return(
         <View style = {styles.container}>
+          <LinearGradient
+              colors={['#80BD72', 'transparent', 'white']}
+              style={styles.background}
+          />
             <Text style = {styles.listTitle}>
            Oh no!</Text>
             <Text style = {styles.subtitle}>{`You haven't completed any tasks yet!\n 
@@ -29,6 +33,10 @@ const Completed = ({route, navigation}) => {
       const todoDone = Object.values(x);
       return (
           <View style = {styles.container}>
+            <LinearGradient
+              colors={['#80BD72', 'transparent', 'white']}
+              style={styles.background}
+          />
               <Text style = {styles.listTitle}>
               Your Completed Todos </Text>
               <Text style = {styles.subtitle}> Well done, you! </Text>
@@ -57,7 +65,14 @@ const Completed = ({route, navigation}) => {
 const styles = StyleSheet.create({
       container: {
         flex: 1,
-        backgroundColor: '#82CAFA',
+        //backgroundColor: '#80BD72',
+      },
+      background: {
+        position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      height: 1000,
       },
       backbutton: {
         width: 60,
