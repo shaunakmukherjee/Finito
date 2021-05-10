@@ -10,7 +10,6 @@ import { Alert,
         View } from 'react-native';
 import Todo from '../components/Todo';
 import { MaterialIcons } from '@expo/vector-icons'; 
-import { AntDesign } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 

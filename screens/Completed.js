@@ -6,6 +6,7 @@ import Todo from '../components/Todo';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
+
 const Completed = ({route, navigation}) => {
 
     const x = route.params;
@@ -31,6 +32,17 @@ const Completed = ({route, navigation}) => {
     }
     else{
       const todoDone = Object.values(x);
+
+
+      const deleteTodo = (index) => {
+        let aux = [...todoDone]
+        aux.splice(index, 1);
+        //setdeleted(aux[index]);
+        //deltodo.push(aux[index])
+        console.log(aux, 'is the remaining list of completed todos')
+        //settodo(aux);
+        //console.log(setdeleted);
+      }
       return (
           <View style = {styles.container}>
             <LinearGradient
@@ -46,7 +58,7 @@ const Completed = ({route, navigation}) => {
                     <ScrollView>{
                       todoDone.map((todo) => {
                         return(
-                          <TouchableOpacity key = {todo} onPress = {() => navigation.navigate('About')}>
+                          <TouchableOpacity key = {todo} onPress = {() => deleteTodo(todoDone.indexOf(todo))}>
                             <Todo text = {todo}></Todo>
                           </TouchableOpacity>
                         );
