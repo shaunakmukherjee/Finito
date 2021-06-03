@@ -14,7 +14,7 @@ Hi there! :wave:
 
 ## Notes <a name = "notes"> </a>
 
-Initial version designed in March 2020.
+Initial version designed in January 2020.
 
 Beta changes added in April 2021 including splash screen, immersive screens and more event handling.
 
